@@ -1,0 +1,283 @@
+﻿<Window x:Name="mainWindow" x:Class="TradeControl.Network.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TradeControl.Network"
+        mc:Ignorable="d"
+        Title="TC Network" Height="562.5" Width="555.312" Loaded="mainWindow_Loaded" Icon="tcNetwork.ico" Closed="mainWindow_Closed">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabsMain" Margin="5" >
+            <TabItem x:Name="pageVersion" Header="Version">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="388*"/>
+                        <ColumnDefinition Width="75*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Margin="40,40,40.333,24" Grid.ColumnSpan="2">
+                        <Label Content="Node Version:" />
+                        <Label Name="lbNodeVersion" Content="0.0.0.0" />
+                        <Label x:Name="lbNodeIncompatibleWarning" Visibility="Hidden" Foreground="Red" FontWeight="Bold" />
+                        <Label Content="NOTE" FontWeight="Bold" Margin="0,20,0,0"/>
+                        <TextBlock TextWrapping="Wrap" Margin="5,0,0,0" >
+                        For guidance consult the 
+                        <Hyperlink NavigateUri="http://github.com/tradecontrol/tc-network/" RequestNavigate="Hyperlink_RequestNavigate" >on-line help</Hyperlink>.
+                        </TextBlock>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1"  Margin="40,56,40.333,40" Grid.ColumnSpan="2">
+                        <TextBlock Text="Trade Control by Trade Control Ltd is licensed under GNU General Public License v3.0." TextWrapping="Wrap" Margin="5,0,0,0" />
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="pageSqlServer" Header="Sql Server" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid ShowGridLines="False" Margin="5" Grid.IsSharedSizeScope="True" Grid.ColumnSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="TextLabel"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="Auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Margin="5" Grid.Column="0" Grid.Row="0" >Sql Server Name:</Label>
+                        <ComboBox x:Name="cbSqlServerName" Grid.Column="1" Grid.Row="0" IsEditable="True" Margin="5" Padding="5" />
+                        <Button Name="btnServers" Grid.Column="2" Content="..." Margin="5" Width="18" HorizontalAlignment="Left" Click="BtnServers_Click" />
+                        <Label Margin="5" Grid.Row="1">Authentication:</Label>
+                        <ComboBox Name="cbAuthenticationMode" Grid.Row="1" Grid.Column="1" Margin="5" SelectedIndex="1" Padding="5" >
+                            <ComboBoxItem Content="Windows Authentication"/>
+                            <ComboBoxItem Content="Sql Server Authentication"/>
+                        </ComboBox>
+                        <Label Grid.Row="3" Margin="5" >Database Name:</Label>
+                        <ComboBox Name="cbDatabaseName" Grid.Row="3" Grid.Column="1" IsEditable="True" Margin="5" DropDownOpened="CbDatabaseName_DropDownOpened" Padding="5" />
+                        <Grid Name="gridCredentials" Grid.Row="2" Background="#FFF1EAEA" IsEnabled="True" Grid.ColumnSpan="2" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"  SharedSizeGroup="TextLabel"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Label Margin="3" >User Name:</Label>
+                            <TextBox x:Name="tbSqlUserName" Grid.Column="1" Margin="3" Padding="5" />
+                            <Label Grid.Row="2" Margin="3" >Password:</Label>
+                            <PasswordBox Name="pbPassword" Grid.Column="1" Grid.Row="2" Margin="3" Padding="5" />
+                        </Grid>
+
+                        <Label Content="Status:" Margin="5" Grid.Row="5" VerticalAlignment="Top" />
+                        <TextBlock Name="lbConnectionStatus" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" Text="Not Connected" Foreground="#FFEA1111" TextWrapping="Wrap" />
+                    </Grid>
+
+                    <StackPanel Grid.Row="1"  Margin="5" Grid.ColumnSpan="3" >
+                        <Button Name="btnTestConnection" Content="Connect" Grid.Row="5" Grid.Column="1" Margin="3" Padding="5" Click="BtnTestConnection_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pageNetwork" Header="Network" Height="22" VerticalAlignment="Top">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="31*" />
+                        <ColumnDefinition Width="64*"/>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Margin="5,0,5,5" Grid.Row="0" Grid.ColumnSpan="4" Content="Connection" VerticalAlignment="Bottom" FontWeight="Bold" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="1" Content="Url:"/>
+                    <ComboBox Margin="5,5,5,0" x:Name="cbNetworkProvider" Grid.Row="1" Grid.Column="1" Text="" VerticalAlignment="Top" IsEditable="True" Padding="5" SelectionChanged="cbNetworkProvider_SelectionChanged" Grid.ColumnSpan="2"  />
+                    <Button Margin="5" Padding="5" Width="60" x:Name="btnRpcConnect" Content="Connect" Grid.Column="3" Grid.Row="1" Click="btnRpcConnect_Click" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="2" Content="Public EOA:" />
+                    <TextBox Margin="5,5,5,0" x:Name="tbPublicKey" Grid.Row="2" Grid.Column="1" Text="" VerticalAlignment="Top" TextWrapping="Wrap" Padding="5" Grid.ColumnSpan="2"   />
+                    <Button Margin="5" Padding="5" x:Name="btnLoadKeys" Content="Load" Grid.Column="3" Grid.Row="2" Click="btnLoadKeys_Click" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="3" Content="Private Key:"/>
+                    <PasswordBox Margin="5" Grid.Row="3" x:Name="tbPrivateKey" Grid.Column="1" Password="" VerticalAlignment="Top"  Padding="5" Grid.ColumnSpan="2"  />
+                    <Button Margin="5" Padding="5" x:Name="btnSaveKeys" Content="Save" Grid.Column="3" Grid.Row="3" Click="btnSaveKeys_Click" />
+                    <Label Margin="5,0,5,5" Grid.Row="4" Grid.ColumnSpan="4" Content="Eth" VerticalAlignment="Bottom" FontWeight="Bold" />
+                    <Label Margin="5" Grid.Row="6" Grid.Column="0" Content="Transfer?" />
+                    <CheckBox Margin="5" Grid.Row="6" Grid.Column="1" x:Name="cbTransferEth" Unchecked="cbTransferEth_Unchecked" Checked="cbTransferEth_Unchecked" Grid.ColumnSpan="2" />
+                    <Label Margin="5,5,5,0" Grid.Row="9" Content="Status:" VerticalAlignment="Top" />
+                    <TextBlock Margin="5" Grid.Row="9" Name="networkStatus" Grid.Column="1" Text="Not Connected" Foreground="#FFEA1111" TextWrapping="Wrap" Grid.ColumnSpan="2"  />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pageTransferEth" Header="Transfer Eth">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Margin="5" Grid.Column="0" Grid.Row="0" >EOA Address:</Label>
+                    <ComboBox x:Name="EOAtransfer" Grid.Column="1" Margin="5" VerticalAlignment="Top" FontWeight="Bold" IsEditable="True" SelectionChanged="EOAtransfer_SelectionChanged"  />
+                    <Button x:Name="btnEoaAddresses" Grid.Column="3" Margin="5" Padding="5" Grid.Row="0" Content="GET" Click="btnRpcConnect_Click" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="1" >Balances:</Label>
+                    <TextBlock x:Name="accountBalances" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" Margin="5"  />
+                    <Button x:Name="btnBalance" Grid.Column="3" Grid.Row="1" Margin="5" Padding="5" Content="GET" Click="btnBalance_Click" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="2" >Gas Price:</Label>
+                    <TextBox x:Name="transferGasPrice" Grid.Column="1" Grid.Row="2" Text="21000" Margin="5" VerticalAlignment="Top" FontWeight="Bold" IsEnabled="False" Padding="5"  />
+                    <CheckBox x:Name="useTransferGasPrice" Grid.Column="3" Grid.Row="2" IsChecked="False" Margin="5" Checked="useTransferGasPrice_Checked" Unchecked="useTransferGasPrice_Checked" />
+                    <Label Margin="5" Grid.Column="0" Grid.Row="3" >Gas:</Label>
+                    <TextBox x:Name="transferGas" Grid.Column="1" Grid.Row="3" Text="25000" Margin="5" VerticalAlignment="Top" FontWeight="Bold" IsEnabled="False" Padding="5" />
+                    <CheckBox x:Name="useTransferGas" Grid.Column="3" Grid.Row="3" IsChecked="False" Margin="5" Checked="useTransferGas_Checked" Unchecked="useTransferGas_Checked" />
+                    <Label Margin="5" Grid.Row="4">Send Eth</Label>
+                    <TextBox x:Name="transferEth" Grid.Row="4" Grid.Column="1" Text="1.0" VerticalAlignment="Top" FontWeight="Bold" Margin="5" Padding="5" />
+                    <Button x:Name="btnTransferEth" Grid.Row="4" Grid.Column="3" Content="SEND" Margin="5" Padding="5" Click="btnTransferEth_Click" />
+                    <Label Content="Status:" Margin="5" Grid.Row="5" VerticalAlignment="Top" />
+                    <TextBlock Name="transferStatus" Grid.Row="5" Grid.Column="1" Margin="5" Padding="5" Text="Not Sent" Foreground="#FFEA1111" TextWrapping="Wrap"  />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pageConsortium" Header="Consortium" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label Margin="5" Padding="5" Grid.Column="0" Grid.Row="0" >Contract:</Label>
+                    <TextBox x:Name="tbConsortiumAddress" Grid.Column="1" Margin="5,5,5,0" VerticalAlignment="Top" Padding="5" TextChanged="tbConsortiumAddress_TextChanged" />
+                    <Label Content="Membership" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" FontWeight="Bold" VerticalAlignment="Bottom" Margin="5,0,5,5" />
+                    <Button x:Name="btnDeployConsortium" Grid.Column="3" Content="DEPLOY" Margin="5" Padding="5" IsEnabled="False" Click="btnDeployConsortium_Click" />
+                    <Label Margin="5" Padding="5" Grid.Column="0" Grid.Row="2" Content="Account:" />
+                    <ComboBox Name="cbMembers" Grid.Column="1" Grid.Row="2" Padding="5" Margin="5" SelectionChanged="cbMembers_SelectionChanged" />
+                    <Label Content="Consortium:" Grid.Column="0" Grid.Row="4" Margin="5" Padding="5" />
+                    <TextBlock x:Name="tbMemberConsortium" Grid.Column="1" Grid.Row="4" Margin="5" Padding="5" />
+                    <Label Content="EOA:" Grid.Row="3" Margin="5" Padding="5" />
+                    <TextBlock x:Name="tbMemberEOA" Grid.Column="1" Grid.Row="3"  Margin="5" Padding="5" />
+                    <Label Content="Authorised?" Grid.Row="5" Margin="5" Padding="5" />
+                    <CheckBox x:Name="cbIsAuthorised" Grid.Column="1" Grid.Row="5" IsChecked="False" Margin="10" IsEnabled="False"  />
+                    <Button x:Name="btnAuthorise" Grid.Column="2" Grid.Row="5" Content="SET" Margin="5" Padding="5" Click="btnAuthorise_Click" />
+                    <Label Content="New Members" Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="4" FontWeight="Bold" VerticalAlignment="Bottom" Margin="5,0,5,5" />
+                    <Label Content="Candidates:" Grid.Column="0" Grid.Row="7" Margin="5" Padding="5" />
+                    <ComboBox x:Name="cbCandidates" Grid.Column="1" Grid.Row="7" Padding="5" Margin="5" SelectionChanged="cbCandidates_SelectionChanged" />
+                    <Button x:Name="btnAddMember" Grid.Column="3" Grid.Row="7" Content="ADD" IsEnabled="False" Padding="5" Margin="5" Click="btnAddMember_Click" />
+                    <Label Margin="5" Padding="5" Grid.Column="0" Grid.Row="8" >EOA:</Label>
+                    <TextBox x:Name="tbNewEOA" Grid.Column="1" Grid.Row="8" Margin="5" Padding="5" TextChanged="tbNewAddress_TextChanged" />
+                    <Label Content="Consortium:" Grid.Column="0" Grid.Row="9" Margin="5" Padding="5" />
+                    <TextBox x:Name="tbNewConsortium" Grid.Column="1" Grid.Row="9" Margin="5" Padding="5" TextChanged="tbNewAddress_TextChanged" />
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pageWatch" Header="Watch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="266*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="248*" />
+                        <ColumnDefinition Width="17*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Label Content="Passive Mode (Double click):" Padding="10"/>
+                    <Label Content="Active Mode:" Padding="10" Grid.Column="2"/>
+                    <ListBox x:Name="PassiveAccounts" Grid.Row="1" Grid.Column="0" Padding="10" Margin="10" MouseDoubleClick="PassiveAccounts_MouseDoubleClick"  />
+                    <ListBox x:Name="ActiveAccounts" Grid.Row="1" Grid.Column="2" Padding="10" Margin="10" MouseDoubleClick="ActiveAccounts_MouseDoubleClick" Grid.ColumnSpan="2" />
+                    <Button x:Name="btnStart" Grid.Column="0" Grid.Row="2" IsEnabled="False" Content="Start" Margin="10" Click="btnStart_Click" />
+                    <Button x:Name="btnStop" Grid.Column="2" Grid.Row="2" IsEnabled="False" Content="Stop" Margin="10" Click="btnStop_Click" Grid.ColumnSpan="2"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="pageTransactions" Header="Transactions">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="16*" />
+                        <ColumnDefinition Width="43*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="TransactionList" Grid.Row="0" Grid.ColumnSpan="2" />
+                    <GridSplitter Grid.Row="1" Height="3" VerticalAlignment="Center" HorizontalAlignment="Stretch" ShowsPreview="False" Grid.ColumnSpan="2" />
+                    <ListBox x:Name="EventList" Grid.Row="2" Grid.ColumnSpan="2" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Row="1" >
+            <StatusBar Name="statusBar" Margin="0" Height="23">
+                <StatusBar.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </ItemsPanelTemplate>
+                </StatusBar.ItemsPanel>
+                <Label x:Name="lbConnections" Margin="0" Padding="0" >-</Label>
+                <StatusBarItem Grid.Column="1">
+                    <Label x:Name="lbActions" Content="" Margin="0" HorizontalAlignment="Right" />
+                </StatusBarItem>
+                <StatusBarItem Grid.Column="2" HorizontalContentAlignment="Right">
+                    <ProgressBar Height="18" Width="80" x:Name="networkState" BorderThickness="0" Visibility="Hidden"  />
+                </StatusBarItem>
+
+            </StatusBar>
+        </StackPanel>
+    </Grid>
+</Window>
+

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6E1869C1-244F-4FC3-8B47-D32130039680}"
+	ProjectSection(SolutionItems) = preProject
+		..\changelog.md = ..\changelog.md
+		..\readme.md = ..\readme.md
+		..\docs\tc_network_demo.md = ..\docs\tc_network_demo.md
+		..\docs\tc_network_spec.md = ..\docs\tc_network_spec.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetwork", "tcNetwork\tcNetwork.csproj", "{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetworkClient", "tcNetworkClient\tcNetworkClient.csproj", "{D00159F0-347D-4F92-87D1-0FC0902BE705}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{D1F81865-138D-4C9F-AB13-8EBDE7EBFE1D}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\netdemo_data_extension.sql = scripts\netdemo_data_extension.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "installation", "installation", "{86200E83-8EA0-40D2-AC70-6A4654007894}"
+	ProjectSection(SolutionItems) = preProject
+		installation\tcNetworkSetup.zip = installation\tcNetworkSetup.zip
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "tcNetworkInstaller", "tcNetworkInstaller\tcNetworkInstaller.vdproj", "{D552D9ED-B8E4-4B70-A387-E069DACF45A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D00159F0-347D-4F92-87D1-0FC0902BE705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D00159F0-347D-4F92-87D1-0FC0902BE705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D00159F0-347D-4F92-87D1-0FC0902BE705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D00159F0-347D-4F92-87D1-0FC0902BE705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D552D9ED-B8E4-4B70-A387-E069DACF45A7}.Debug|Any CPU.ActiveCfg = Debug
+		{D552D9ED-B8E4-4B70-A387-E069DACF45A7}.Debug|Any CPU.Build.0 = Debug
+		{D552D9ED-B8E4-4B70-A387-E069DACF45A7}.Release|Any CPU.ActiveCfg = Release
+		{D552D9ED-B8E4-4B70-A387-E069DACF45A7}.Release|Any CPU.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FB05C523-3D02-476E-8B8E-DB6CCCF254BD}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,402 @@
+{
+  "contractName": "mortal",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "destroy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.12+commit.7709ece9\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[],\"name\":\"destroy\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/mortal.sol\":\"mortal\"},\"evmVersion\":\"petersburg\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/mortal.sol\":{\"keccak256\":\"0x5d0ce4efb9b73206e8bf9cf011cadb17b50a0a1ab454c9b844d79462fe7e44b7\",\"urls\":[\"bzz-raw://e100c6f24909feebde75702c7fd6a1487072dd5454e8780e6019fc46e4f72ebe\",\"dweb:/ipfs/QmPhtTGzE1sN1hrHjebdksV4q5XexGAiN5EcJEkoaKnKik\"]},\"/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/owned.sol\":{\"keccak256\":\"0x6bba9653822386a86697bd492b99887e140d6f5575e9a9b1eb42ed5d4ecac3ca\",\"urls\":[\"bzz-raw://e02ee068f3cc031ff3d7530601efcaee1614f87e0b7724eda8cc0de827d532a6\",\"dweb:/ipfs/QmaMo28pUCW2bv13rY7vBPH5ohRRCnzRJ8Sc5eQrXRqek8\"]}},\"version\":1}",
+  "bytecode": "0x6080604052336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555061017c806100536000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c806383197ef014610030575b600080fd5b61003861003a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146100df576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602e81526020018061011a602e913960400191505060405180910390fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16fffe4f6e6c792074686520636f6e7472616374206f776e65722063616e2063616c6c20746869732066756e6374696f6ea265627a7a72315820c12c91f6a785ac93a2ee2df2040a4188968616b46041b07cb663ffad10052f2964736f6c634300050c0032",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c806383197ef014610030575b600080fd5b61003861003a565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16146100df576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602e81526020018061011a602e913960400191505060405180910390fd5b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16fffe4f6e6c792074686520636f6e7472616374206f776e65722063616e2063616c6c20746869732066756e6374696f6ea265627a7a72315820c12c91f6a785ac93a2ee2df2040a4188968616b46041b07cb663ffad10052f2964736f6c634300050c0032",
+  "sourceMap": "63:122:7:-;;;215:10:8;207:5;;:18;;;;;;;;;;;;;;;;;;63:122:7;;;;;;",
+  "deployedSourceMap": "63:122:7:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;63:122:7;;;;;;;;;;;;;;;;;;;117:65;;;:::i;:::-;;;311:5:8;;;;;;;;;;;297:19;;:10;:19;;;289:78;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;171:5:7;;;;;;;;;;;158:19;;",
+  "source": "pragma solidity >=0.4.21 <=0.5.12;\r\n\r\nimport './owned.sol';\r\n\r\ncontract mortal is owned {\r\n\t// Contract destructor\r\n\tfunction destroy() public onlyOwner {\r\n\t\tselfdestruct(owner);\r\n\t}\r\n}",
+  "sourcePath": "E:\\company\\trade control\\apps\\repos\\tc-network\\src\\tcNetwork\\solidity\\contracts\\mortal.sol",
+  "ast": {
+    "absolutePath": "/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/mortal.sol",
+    "exportedSymbols": {
+      "mortal": [
+        2343
+      ]
+    },
+    "id": 2344,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2329,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<=",
+          "0.5",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:34:7"
+      },
+      {
+        "absolutePath": "/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/owned.sol",
+        "file": "./owned.sol",
+        "id": 2330,
+        "nodeType": "ImportDirective",
+        "scope": 2344,
+        "sourceUnit": 2370,
+        "src": "38:21:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2331,
+              "name": "owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2369,
+              "src": "82:5:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_owned_$2369",
+                "typeString": "contract owned"
+              }
+            },
+            "id": 2332,
+            "nodeType": "InheritanceSpecifier",
+            "src": "82:5:7"
+          }
+        ],
+        "contractDependencies": [
+          2369
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2343,
+        "linearizedBaseContracts": [
+          2343,
+          2369
+        ],
+        "name": "mortal",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2341,
+              "nodeType": "Block",
+              "src": "153:29:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2338,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2347,
+                        "src": "171:5:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 2337,
+                      "name": "selfdestruct",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2392,
+                      "src": "158:12:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_payable_$returns$__$",
+                        "typeString": "function (address payable)"
+                      }
+                    },
+                    "id": 2339,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "158:19:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2340,
+                  "nodeType": "ExpressionStatement",
+                  "src": "158:19:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2342,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2335,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2334,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 2368,
+                  "src": "143:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "143:9:7"
+              }
+            ],
+            "name": "destroy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2333,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "133:2:7"
+            },
+            "returnParameters": {
+              "id": 2336,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "153:0:7"
+            },
+            "scope": 2343,
+            "src": "117:65:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2344,
+        "src": "63:122:7"
+      }
+    ],
+    "src": "0:185:7"
+  },
+  "legacyAST": {
+    "absolutePath": "/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/mortal.sol",
+    "exportedSymbols": {
+      "mortal": [
+        2343
+      ]
+    },
+    "id": 2344,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2329,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".21",
+          "<=",
+          "0.5",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:34:7"
+      },
+      {
+        "absolutePath": "/E/company/trade control/apps/repos/tc-network/src/tcNetwork/solidity/contracts/owned.sol",
+        "file": "./owned.sol",
+        "id": 2330,
+        "nodeType": "ImportDirective",
+        "scope": 2344,
+        "sourceUnit": 2370,
+        "src": "38:21:7",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2331,
+              "name": "owned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2369,
+              "src": "82:5:7",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_owned_$2369",
+                "typeString": "contract owned"
+              }
+            },
+            "id": 2332,
+            "nodeType": "InheritanceSpecifier",
+            "src": "82:5:7"
+          }
+        ],
+        "contractDependencies": [
+          2369
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 2343,
+        "linearizedBaseContracts": [
+          2343,
+          2369
+        ],
+        "name": "mortal",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2341,
+              "nodeType": "Block",
+              "src": "153:29:7",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 2338,
+                        "name": "owner",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2347,
+                        "src": "171:5:7",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      ],
+                      "id": 2337,
+                      "name": "selfdestruct",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2392,
+                      "src": "158:12:7",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_selfdestruct_nonpayable$_t_address_payable_$returns$__$",
+                        "typeString": "function (address payable)"
+                      }
+                    },
+                    "id": 2339,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "158:19:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 2340,
+                  "nodeType": "ExpressionStatement",
+                  "src": "158:19:7"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 2342,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 2335,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 2334,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 2368,
+                  "src": "143:9:7",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "143:9:7"
+              }
+            ],
+            "name": "destroy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2333,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "133:2:7"
+            },
+            "returnParameters": {
+              "id": 2336,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "153:0:7"
+            },
+            "scope": 2343,
+            "src": "117:65:7",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 2344,
+        "src": "63:122:7"
+      }
+    ],
+    "src": "0:185:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.12+commit.7709ece9.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.19",
+  "updatedAt": "2020-05-02T14:07:16.626Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
