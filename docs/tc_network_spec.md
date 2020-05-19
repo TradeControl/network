@@ -218,11 +218,11 @@ async void PassiveWatch()
 
 ## Allocations
 
-[The demo](tc_network_demo.md) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/tradecontrol/tc-nodecore/tcNodeDb/Task/vwAllocationSvD.sql) view.
+[The demo](tc_network_demo.md) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Task/Views/vwAllocationSvD.sql) view.
 
 ## Invoice Mirrors
 
-[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.tbMirror](https://github.com/tradecontro/tc-nodecore/tcNodeDb/Invoice/Stored%20Procedure/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. . When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
+[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.proc_Mirror](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Invoice/Stored%20Procedures/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. . When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
 
 ``` javascript
 function InvoiceMirror(Orgs storage _self, string memory _invoiceNumber, address _invoiceContract) internal
