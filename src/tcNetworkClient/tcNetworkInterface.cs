@@ -16,7 +16,7 @@ namespace TradeControl.Network
 {
     public partial class MainWindow : Window
     {
-        static tcWeb3 web3Watcher;
+        static TCWeb3 web3Watcher;
 
         EthEventHandler watchEvent;
         EthEventHandler watchTransaction;
@@ -59,10 +59,10 @@ namespace TradeControl.Network
                         {
                             lbNodeVersion.Content = tcnode.InstalledVersion;
 
-                            if (tcnode.InstalledVersion < tcWeb3.NetworkNodeVersion)
+                            if (tcnode.InstalledVersion < TCWeb3.NetworkNodeVersion)
                             {
                                 lbConnectionStatus.Foreground = new SolidColorBrush(Colors.Red);
-                                lbConnectionStatus.Text = string.Format(Properties.Resources.NodeVersionIncompatible, tcWeb3.NetworkNodeVersion.ToString());
+                                lbConnectionStatus.Text = string.Format(Properties.Resources.NodeVersionIncompatible, TCWeb3.NetworkNodeVersion.ToString());
                                 lbNodeIncompatibleWarning.Content = lbConnectionStatus.Text;
                                 lbNodeIncompatibleWarning.Visibility = Visibility.Visible;
                             }
@@ -245,7 +245,7 @@ namespace TradeControl.Network
 
                 EOAtransfer.Items.Clear();
 
-                using (tcWeb3 web3 = new tcWeb3(NetworkProvider))
+                using (TCWeb3 web3 = new TCWeb3(NetworkProvider))
                 {
                     accounts = await web3.Accounts();
 
@@ -303,7 +303,7 @@ namespace TradeControl.Network
         {
             try
             {
-                tcWeb3 web3 = new tcWeb3(NetworkProvider);
+                TCWeb3 web3 = new TCWeb3(NetworkProvider);
 
                 decimal yourBalance = await web3.GetAccountBalance(PublicKey);
                 var theirBalance = await web3.GetAccountBalance(EOAtransfer.Text);
@@ -327,7 +327,7 @@ namespace TradeControl.Network
                     return;
                 }
 
-                using (tcWeb3 web3 = new tcWeb3(NetworkProvider, PublicKey, PrivateKey))
+                using (TCWeb3 web3 = new TCWeb3(NetworkProvider, PublicKey, PrivateKey))
                 {
                     bool setGasPrice = (bool)useTransferGasPrice.IsChecked;
                     bool setGas = (bool)useTransferGas.IsChecked;
@@ -371,7 +371,7 @@ namespace TradeControl.Network
             {
                 if (isDbConnected)
                 {
-                    using (tcWeb3 web3 = new tcWeb3(NetworkProvider, PublicKey, PrivateKey))
+                    using (TCWeb3 web3 = new TCWeb3(NetworkProvider, PublicKey, PrivateKey))
                     {
                         web3.OnEthTransaction += Web3_OnEthTransaction;
                         ConsortiumAddress = await web3.DeployConsortium();
@@ -393,7 +393,7 @@ namespace TradeControl.Network
         {
             try
             {
-                using (tcWeb3 web3 = new tcWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress))
+                using (TCWeb3 web3 = new TCWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress))
                 {
                     web3.OnEthTransaction += Web3_OnEthTransaction;
                     web3.TCNode = new TCNodeNetwork(NodeConnectionString);
@@ -424,7 +424,7 @@ namespace TradeControl.Network
         {
             try
             {
-                using (tcWeb3 web3 = new tcWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress))
+                using (TCWeb3 web3 = new TCWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress))
                 {
                     tbMemberConsortium.Text = await web3.GetConsortium(MemberAccountCode);
                     tbMemberEOA.Text = await web3.GetEOA(MemberAccountCode);
@@ -443,7 +443,7 @@ namespace TradeControl.Network
         {
             try
             {
-                using (tcWeb3 web3 = new tcWeb3(NetworkProvider, PublicKey, PrivateKey))
+                using (TCWeb3 web3 = new TCWeb3(NetworkProvider, PublicKey, PrivateKey))
                 {
                     web3.OnEthTransaction += Web3_OnEthTransaction;
                     bool isAuthorised = await web3.GetAuthorisation(MemberAccountCode);
@@ -471,7 +471,7 @@ namespace TradeControl.Network
             { 
                 if (isDbConnected && isWeb3Connected)
                 {
-                    web3Watcher = new tcWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress);
+                    web3Watcher = new TCWeb3(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress);
                     web3Watcher.TCNode = new TCNodeNetwork(NodeConnectionString);
                     web3Watcher.OnEthEvent += new EthEventHandler(Web3_OnEthEvent);
                     web3Watcher.OnEthTransaction += new EthEventHandler(Web3_OnEthTransaction);

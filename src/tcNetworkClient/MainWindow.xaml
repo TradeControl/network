@@ -72,7 +72,7 @@
                         <ComboBox x:Name="cbSqlServerName" Grid.Column="1" Grid.Row="0" IsEditable="True" Margin="5" Padding="5" />
                         <Button Name="btnServers" Grid.Column="2" Content="..." Margin="5" Width="18" HorizontalAlignment="Left" Click="BtnServers_Click" />
                         <Label Margin="5" Grid.Row="1">Authentication:</Label>
-                        <ComboBox Name="cbAuthenticationMode" Grid.Row="1" Grid.Column="1" Margin="5" SelectedIndex="1" Padding="5" >
+                        <ComboBox Name="cbAuthenticationMode" Grid.Row="1" Grid.Column="1" Margin="5" SelectedIndex="1" Padding="5" SelectionChanged="cbAuthenticationMode_SelectionChanged" >
                             <ComboBoxItem Content="Windows Authentication"/>
                             <ComboBoxItem Content="Sql Server Authentication"/>
                         </ComboBox>

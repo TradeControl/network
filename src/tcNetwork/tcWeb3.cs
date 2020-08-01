@@ -43,7 +43,7 @@ namespace TradeControl.Network
 
     public delegate void EthEventHandler(EthEventArgs e);
 
-    public class tcWeb3 : IDisposable
+    public sealed class TCWeb3 : IDisposable
     {
         #region declarations
         private static string NetworkProvider { get ; set; }
@@ -86,13 +86,13 @@ namespace TradeControl.Network
         #endregion
 
         #region class
-        public tcWeb3(string networkProvider)
+        public TCWeb3(string networkProvider)
         {
             NetworkProvider = networkProvider;
             web3 = new Web3(networkProvider);
         }
 
-        public tcWeb3(string networkProvider, string publicKey)
+        public TCWeb3(string networkProvider, string publicKey)
         {
             NetworkProvider = networkProvider;
             PublicKey = publicKey;
@@ -100,7 +100,7 @@ namespace TradeControl.Network
             web3 = new Web3(networkProvider);
         }
 
-        public tcWeb3(string networkProvider, string publicKey, string privateKey)
+        public TCWeb3(string networkProvider, string publicKey, string privateKey)
         {
             NetworkProvider = networkProvider;
             PublicKey = publicKey;
@@ -110,7 +110,7 @@ namespace TradeControl.Network
             web3 = new Web3(account, networkProvider);            
         }
 
-        public tcWeb3(string networkProvider, string publicKey, string privateKey, string consortiumAddress)
+        public TCWeb3(string networkProvider, string publicKey, string privateKey, string consortiumAddress)
         {
             NetworkProvider = networkProvider;
             PublicKey = publicKey;
@@ -796,6 +796,13 @@ namespace TradeControl.Network
 
                 totalGasUsed += await InvoiceDeploymentDetails(consortium, invoiceContract, invoice);
 
+                if (invoice.PaymentAddress?.Length > 0)
+                {
+                    var paymentAddressReceipt = await invoiceContract.SetPaymentAddressRequestAndWaitForReceiptAsync(invoice.PaymentAddress);
+                    WatchTransaction($"Tx {paymentAddressReceipt.TransactionHash}", $"Invoice {invoice.InvoiceNumber} payment address ({invoice.PaymentAddress}). Gas {paymentAddressReceipt.GasUsed} Wei");
+                    totalGasUsed += paymentAddressReceipt.GasUsed.ToUlong();
+                }
+
                 var targetConsortium = new OrgService(web3, targetConsortiumAddress);
 
                 if (invoice.ContractNumber != null)
@@ -810,6 +817,7 @@ namespace TradeControl.Network
                     WatchTransaction($"Tx {notificationReceipt.TransactionHash}", $"Account {invoice.AccountCode} notified of invoice {invoice.InvoiceNumber} at {targetConsortiumAddress}. Gas {notificationReceipt.GasUsed} Wei");
                     totalGasUsed += notificationReceipt.GasUsed.ToUlong();
                 }
+
 
                 WatchTransaction(deploymentReceipt.ContractAddress, $"Invoice contract {invoice.InvoiceNumber} successful deployed for {totalGasUsed} Wei");
 
@@ -870,6 +878,7 @@ namespace TradeControl.Network
 
                 decimal contractPaidValue = FromEthDecimalStorage(invoiceParams.PaidValue, EVM_CHARGE_DP);
                 decimal contractPaidTaxValue = FromEthDecimalStorage(invoiceParams.PaidTaxValue, EVM_CHARGE_DP);
+
                 if ((invoice.PaidTaxValue + invoice.PaidValue) != (contractPaidValue + contractPaidTaxValue))
                 {
                     var paymentReceipt = await invoiceContract.PaymentRequestAndWaitForReceiptAsync((byte)invoice.InvoiceStatusCode,
@@ -882,6 +891,16 @@ namespace TradeControl.Network
                     var statusReceipt = await invoiceContract.StatusChangeRequestAndWaitForReceiptAsync((byte)invoice.InvoiceStatusCode);
                     WatchTransaction($"Tx {statusReceipt.TransactionHash}", $"Invoice {invoice.InvoiceNumber} status update ({invoice.InvoiceStatusCode}). Gas {statusReceipt.GasUsed} Wei");
                     totalGasUsed += statusReceipt.GasUsed.ToUlong();
+                }
+
+                if (invoice.PaymentAddress != null && invoice.PaymentAddress?.ToString() != invoiceParams.PaymentAddress?.ToString())
+                {
+                    if (invoice.PaymentAddress.Length > 0)
+                    {
+                        var paymentAddressReceipt = await invoiceContract.SetPaymentAddressRequestAndWaitForReceiptAsync(invoice.PaymentAddress);
+                        WatchTransaction($"Tx {paymentAddressReceipt.TransactionHash}", $"Invoice {invoice.InvoiceNumber} payment address ({invoice.PaymentAddress}). Gas {paymentAddressReceipt.GasUsed} Wei");
+                        totalGasUsed += paymentAddressReceipt.GasUsed.ToUlong();
+                    }
                 }
 
                 string targetConsortiumAddress = await consortium.GetConsortiumQueryAsync(invoice.AccountCode);
@@ -943,6 +962,7 @@ namespace TradeControl.Network
                     InvoiceTax = FromEthDecimalStorage(invoiceParams.TaxValue, EVM_CHARGE_DP),
                     PaidValue = FromEthDecimalStorage(invoiceParams.PaidValue, EVM_CHARGE_DP),
                     PaidTaxValue = FromEthDecimalStorage(invoiceParams.PaidTaxValue, EVM_CHARGE_DP),
+                    PaymentAddress = invoiceParams.PaymentAddress,
                     PaymentTerms = invoiceHeader.PaymentTerms,
                     UnitOfCharge = invoiceHeader.UnitOfCharge,
                     InsertedOn = DateTime.Now

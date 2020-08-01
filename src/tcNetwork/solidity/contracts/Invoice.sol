@@ -49,6 +49,7 @@ contract Invoice is mortal {
     string invoiceNumber;
     string mirrorNumber;
     string paymentTerms;
+    string paymentAddress;
 
     uint invoicedOn;
     uint dueOn;
@@ -64,6 +65,7 @@ contract Invoice is mortal {
     event OnPayment (uint paymentValue, uint outstandingAmount);
     event OnStatusChange (InvoiceStatus status);
     event OnDueChange (uint nowDue);
+    event OnPaymentAddress (string paymentAddress);
 
     constructor () public {
         state = InvoiceState.Instantiated;
@@ -90,6 +92,7 @@ contract Invoice is mortal {
         paymentTerms = _paymentTerms;
         unitOfCharge = _unitOfCharge;
         state = InvoiceState.Header;
+        paymentAddress = "";
     }
 
 
@@ -135,7 +138,7 @@ contract Invoice is mortal {
     }
 
     function GetParams() public view returns (InvoiceStatus _status, uint _dueOn, uint _invoicedOn,
-            uint _invoiceValue, uint _taxValue, uint _paidValue, uint _paidTaxValue) {
+            uint _invoiceValue, uint _taxValue, uint _paidValue, uint _paidTaxValue, string memory _paymentAddress) {
         require (state != InvoiceState.Instantiated, "Not set!");
         _status = status;
         _dueOn = dueOn;
@@ -144,6 +147,7 @@ contract Invoice is mortal {
         _taxValue = taxValue;
         _paidValue = paidValue;
         _paidTaxValue = paidTaxValue;
+        _paymentAddress = paymentAddress;
     }
 
     function GetTaskCount() public view returns (uint _taskCount) {
@@ -175,6 +179,12 @@ contract Invoice is mortal {
     }
 
     // ** process **
+    function SetPaymentAddress (string memory _paymentAddress) public onlyOwner {
+        require (state != InvoiceState.Instantiated, "Not configured!");
+        paymentAddress = _paymentAddress;
+        emit OnPaymentAddress(_paymentAddress);
+    }
+
     function Reschedule(uint _dueOn) public onlyOwner {
         require (state != InvoiceState.Instantiated, "Not configured!");
         dueOn = _dueOn;

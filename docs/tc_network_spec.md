@@ -222,7 +222,7 @@ async void PassiveWatch()
 
 ## Invoice Mirrors
 
-[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.proc_Mirror](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Invoice/Stored%20Procedures/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. . When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
+[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.proc_Mirror](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Invoice/Stored%20Procedures/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
 
 ``` javascript
 function InvoiceMirror(Orgs storage _self, string memory _invoiceNumber, address _invoiceContract) internal
@@ -236,3 +236,9 @@ function InvoiceMirror(Orgs storage _self, string memory _invoiceNumber, address
     _self.Invoices[accountCode][_invoiceNumber].IsMirrored = true;
 }
 ```
+
+## Licence
+
+Trade Control Documentation by Trade Control Ltd is licenced under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/) 
+
+![Creative Commons](https://i.creativecommons.org/l/by-sa/4.0/88x31.png)

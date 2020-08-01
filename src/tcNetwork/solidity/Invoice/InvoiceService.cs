@@ -291,6 +291,32 @@ namespace Solidity.Contracts.Invoice
              return ContractHandler.SendRequestAndWaitForReceiptAsync(setHeaderFunction, cancellationToken);
         }
 
+        public Task<string> SetPaymentAddressRequestAsync(SetPaymentAddressFunction setPaymentAddressFunction)
+        {
+             return ContractHandler.SendRequestAsync(setPaymentAddressFunction);
+        }
+
+        public Task<TransactionReceipt> SetPaymentAddressRequestAndWaitForReceiptAsync(SetPaymentAddressFunction setPaymentAddressFunction, CancellationTokenSource cancellationToken = null)
+        {
+             return ContractHandler.SendRequestAndWaitForReceiptAsync(setPaymentAddressFunction, cancellationToken);
+        }
+
+        public Task<string> SetPaymentAddressRequestAsync(string paymentAddress)
+        {
+            var setPaymentAddressFunction = new SetPaymentAddressFunction();
+                setPaymentAddressFunction.PaymentAddress = paymentAddress;
+            
+             return ContractHandler.SendRequestAsync(setPaymentAddressFunction);
+        }
+
+        public Task<TransactionReceipt> SetPaymentAddressRequestAndWaitForReceiptAsync(string paymentAddress, CancellationTokenSource cancellationToken = null)
+        {
+            var setPaymentAddressFunction = new SetPaymentAddressFunction();
+                setPaymentAddressFunction.PaymentAddress = paymentAddress;
+            
+             return ContractHandler.SendRequestAndWaitForReceiptAsync(setPaymentAddressFunction, cancellationToken);
+        }
+
         public Task<string> StatusChangeRequestAsync(StatusChangeFunction statusChangeFunction)
         {
              return ContractHandler.SendRequestAsync(statusChangeFunction);

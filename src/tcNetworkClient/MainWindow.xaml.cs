@@ -109,6 +109,13 @@ namespace TradeControl.Network
             }
         }
 
+        private void cbAuthenticationMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (gridCredentials != null)
+            {
+                gridCredentials.IsEnabled = this.Authentication == AuthenticationMode.SqlServer;
+            }
+        }
         #endregion
 
         #region eth events
@@ -200,9 +207,9 @@ namespace TradeControl.Network
             e.Handled = true;
         }
 
-#endregion
+        #endregion
 
-#region consortium events
+        #region consortium events
         private void btnDeployConsortium_Click(object sender, RoutedEventArgs e)
         {
             DeployConsortium();
@@ -298,7 +305,7 @@ namespace TradeControl.Network
 
 
 
-#endregion
+        #endregion
 
     }
 }

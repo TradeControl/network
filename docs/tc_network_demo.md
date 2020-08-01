@@ -1,14 +1,14 @@
 # Trade Control - Network Demo
 
-Demonstrating how to set up supply chains: organising production, commerce and financial exchange. It assumes you are familiar with the system or have completed the [BOM demo](https://github.com/tradecontrol/tc-office/blob/master/docs/tc_demo_manufacturing.md).
+Demonstrating how to set up supply chains: organising production, commerce and financial exchange. It assumes you are familiar with the system or have completed the [BOM demo](https://github.com/tradecontrol/tc-office/blob/master/docs/tc_demo_manufacturing.md). If you are following the [Bitcoin Demo](https://github.com/tradecontrol/tc-bitcoin/blob/master/docs/tc_bitcoin_demo.md), the procedure is the same as that for fiat currencies, except for the [payment](#payment).
 
 ## Setup
 
 ### Requirements
 
 - [Test Environment](../readme.md#test-environment)
-- [TC Node >= 3.27.1](https://github.com/tradecontrol/tc-nodecore)
-- [TC Office >= 3.13.1](https://github.com/tradecontrol/tc-office)
+- [TC Node](https://github.com/tradecontrol/tc-nodecore) - Fiat >= 3.27.1; Bitcoin >= 3.28.3
+- [TC Office](https://github.com/tradecontrol/tc-office) - Fiat >= 3.13.1; Bitcoin >= 3.14.1
 
 ### Database
 
@@ -90,7 +90,7 @@ Here's the STORAGE BOX COMPANY instance as well:
  
 ### Network Transactions
 
-Now that the consortium has been created and activities mirrored, order books can be exchanged over the network. However, it is not possible to mirror order books in many circumstances; instead, we employ the manufacturing systems solution of allocations It is the set of all allocations that become mirrored by either party. To understand how that works practically, it is best to start with the Plastic Supplier.
+Now that the consortium has been created and activities mirrored, order books can be exchanged over the network. However, it is not possible to mirror order books in many circumstances; instead, we employ the manufacturing systems solution of allocations. It is the set of all allocations that become mirrored by either party. To understand how that works practically, it is best to start with the Plastic Supplier.
 
 1. From the Network Allocations for the Plastic Provider (tcPLAPRO), you will see each order placed by The Business (tcTHEBUS). The quantities are negative because the activity is consumed in the act of delivery. The idea therefore is to position supply tasks such that the balance is always positive.
 
@@ -165,7 +165,9 @@ In manufacturing, despatches are made on a delivery note raised by the Despatch 
 
 ### Payment
 
-As the goods have flowed up the supply chain, so we now go back down again, paying the invoices in exchange for their goods or service.
+As the goods have flowed up the supply chain, so we now go back down again, paying the invoices in exchange for their goods or service. If you are using a fiat currency, this process is controlled by the banks. Otherwise, you can pay directly from your [Bitcoin Wallet](https://github.com/tradecontrol/tc-bitcoin).
+
+#### Fiat
 
 1. From tcSTOBOX, look at the Company Statement. Open Payment Entry and pay the plastic supplier (assuming an overdraft). You only need to select the organisation and post the defaults. The current balance of the Company Statement is reduced accordingly, and the invoices removed. A payment event is sent to the supplier notifying them that you have paid up, but their mirror invoice remains unpaid.
 2. Connect to tcTHEBUS. Check out the network allocations, invoice mirrors and events to see how they have been automatically updated over the network. Enter the customer's payment to complete the process and a payment event will be sent out. The goods have been successfully delivered to the customer (quantity in, cash out), and in exchange, the money paid to the supplier (quantity out, cash in). Because both parties enter payments from their respective bank statements, the payment notification events automate confirmation that the money has been received.
@@ -175,6 +177,7 @@ As the goods have flowed up the supply chain, so we now go back down again, payi
 3. Pay the Plastic Provider and open their instance. When you have entered the payment as income their Company Statement will now show a positive opening balance (the statement does not show paid invoices):
 
 ![Company Statement](../img/netdemo_company_statement.png)
+
 
 ### Credits and Returns
 

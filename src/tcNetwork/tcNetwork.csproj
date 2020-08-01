@@ -124,7 +124,7 @@
     <Compile Include="solidity\Org\OrgService.cs" />
     <Compile Include="solidity\Task\ContractDefinition\TaskDefinition.cs" />
     <Compile Include="solidity\Task\TaskService.cs" />
-    <Compile Include="tcWeb3.cs" />
+    <Compile Include="TCWeb3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

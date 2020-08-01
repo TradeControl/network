@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6E1869C1-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetwork", "tcNetwork\tcNetwork.csproj", "{0CC6CAD7-45C6-47C1-BD81-5FE4309624B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetworkClient", "tcNetworkClient\tcNetworkClient.csproj", "{D00159F0-347D-4F92-87D1-0FC0902BE705}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetwork.Client", "tcNetworkClient\tcNetwork.Client.csproj", "{D00159F0-347D-4F92-87D1-0FC0902BE705}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{D1F81865-138D-4C9F-AB13-8EBDE7EBFE1D}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,7 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "installation", "installatio
 		installation\tcNetworkSetup.zip = installation\tcNetworkSetup.zip
 	EndProjectSection
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "tcNetworkInstaller", "tcNetworkInstaller\tcNetworkInstaller.vdproj", "{D552D9ED-B8E4-4B70-A387-E069DACF45A7}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "tcNetwork.Installer", "tcNetworkInstaller\tcNetworkInstaller.vdproj", "{D552D9ED-B8E4-4B70-A387-E069DACF45A7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

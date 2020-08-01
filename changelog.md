@@ -5,3 +5,11 @@ The following record logs changes to the full release of the Trade Control netwo
 ## 1.1.0
 
 First release May 2020
+
+## 1.2.0
+
+Integration with the [Trade Control bitcoin](https://github.com/tradecontrol/tc-bitcoin) payment system.
+
+- [x] [invoice contract](src/tcNetwork/solidity/contracts/Invoice.sol) payment address and assignment event
+- [x] communicate the bitcoin payment address for invoiced receipts
+- [x] write the bitcoin address for paying invoice mirrors

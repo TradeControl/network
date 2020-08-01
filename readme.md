@@ -5,9 +5,9 @@ Connecting [Trade Control](https://github.com/tradecontrol/tc-nodecore) nodes wi
 
 ## Overview
 
-### Consumer Network
+### Supply Chains
 
-The capability for Trade Control to be connected in a [Consumer Network](https://github.com/iamonnox/tradecontrol/blob/master/docs/tc_functions.md#networks) is intrinsic to the schema design. Its practical implementation allows businesses to create private consortiums and public markets where borderless trading patterns are more-or-less instantly reflected over their supply chains.
+The capability for Trade Control to be connected in a [network](https://github.com/iamonnox/tradecontrol/blob/master/docs/tc_functions.md#networks) is intrinsic to the schema design. Its practical implementation allows businesses to create private consortiums and public markets where borderless trading patterns are more-or-less instantly reflected over their supply-chains.
 
 A network consists of connected nodes. To qualify as a node, outputs must be accepted recursively as inputs, and Trade Control achieves this by modelling workflows in terms of polarity. This is explained in [the accompanying paper](https://github.com/iamonnox/tradecontrol/blob/master/docs/tc_functions.md#cash-polarity). Here we demonstrate how it works practically and implement a feature set that can be used successfully in your business. Once nodes are connected, the network operates as though it is a single distributed world-wide trading platform.
 
@@ -28,7 +28,7 @@ The Ethereum Virtual Machine (EVM) enables coders to write programs, called Cont
 
 There is a minimal charge for using the EVM on the Ethereum Main Net, paid for in the utilities own currency called Eth. Its purpose is to prevent attackers consuming infinite CPU time on this publicly available world computer and pay fees to the network administrators (called miners). Although financial transactions in Ethereum are therefore built into the blockchain, they are not generally used by business because the platform is not a payment system for a digital currency. 
 
-Ethereum supports HD Wallets. Therefore, now that we have the contracts and a network interface, it would be relatively straight forward to use Eth as a currency of exchange, or even, experimentally, a Unit of Account. We will not do that partly for the reasons stated, but also because we are doing [something else](https://github.com/tradecontrol/tc-bitcoin).
+Ethereum supports HD Wallets. Therefore, now that we have the contracts and a network interface, it would be relatively straight forward to use Eth as a currency of exchange, or even, experimentally, a Unit of Account. We will not do that partly for the reasons stated, but also because Trade Control uses a [Bitcoin HD Wallet](https://github.com/tradecontrol/tc-bitcoin) instead.
 
 Because we are only interested in the P2P world computer dimensions of Ethereum, the Trade Control network [can be installed on any public blockchain](#public-network) running an EVM outside the Main Net.  On these networks the ETH is free because it is without value.
 
@@ -45,7 +45,7 @@ For the latest changes and current version, consult the [Change Log](changelog.m
 
 The Trade Control Network is serviced by changes to the following repositories:
 
-- [tc-nodecore](https://github.com/tradecontrol/tc-nodecore) >= 3.27.3
+- [tc-node](https://github.com/tradecontrol/tc-nodecore) >= 3.27.1
 - [tc-office](https://github.com/tradecontrol/tc-office) >= 3.13.0
 
 ### Installer
@@ -86,9 +86,4 @@ The Trade Control Code licence is issued by Trade Control Ltd under a [GNU Gener
 Trade Control Documentation by Trade Control Ltd is licenced under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/) 
 
 ![Creative Commons](https://i.creativecommons.org/l/by-sa/4.0/88x31.png) 
-
-## Author
-
-Ian Monnox
-&nbsp; [GitHub](https://github.com/iamonnox)
 
