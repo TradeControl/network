@@ -1,6 +1,6 @@
 # Trade Control - Network
 
-Connecting [Trade Control](https://github.com/tradecontrol/tc-nodecore) nodes with [Ethereum](https://github.com/ethereum/wiki/wiki).
+Connecting [Trade Control](https://github.com/tradecontrol/sqlnode) nodes with [Ethereum](https://github.com/ethereum/wiki/wiki).
 
 
 ## Overview
@@ -13,7 +13,7 @@ A network consists of connected nodes. To qualify as a node, outputs must be acc
 
 > **NOTE**
 > 
-> This facility is not necessary for you to start using [the app](https://github.com/tradecontrol/tc-office) in your business, because it also works fine in stand-alone mode.  
+> This facility is not necessary for you to start using [the app](https://github.com/tradecontrol/office) in your business, because it also works fine in stand-alone mode.  
 
 ### Software Network
 
@@ -21,14 +21,14 @@ The Ethereum Virtual Machine (EVM) enables coders to write programs, called Cont
 
 1. Immutably and safely record transactions in Ethereum's public blockchain
 2. Dispense with the traditional commercial communication protocols (legality aside)
-3. Improve the integrity and responsiveness of the [Company Statement](https://github.com/tradecontrol/tc-powerbi/blob/master/readme.md#statements)
+3. Improve the integrity and responsiveness of the [Company Statement](https://github.com/tradecontrol/powerbi/blob/master/readme.md#statements)
 3. Deliver the necessary communications for [supply-chain scheduling](https://github.com/iamonnox/tradecontrol/blob/master/docs/tc_functions.md#supply-and-demand)
 
 ### Currency
 
 There is a minimal charge for using the EVM on the Ethereum Main Net, paid for in the utilities own currency called Eth. Its purpose is to prevent attackers consuming infinite CPU time on this publicly available world computer and pay fees to the network administrators (called miners). Although financial transactions in Ethereum are therefore built into the blockchain, they are not generally used by business because the platform is not a payment system for a digital currency. 
 
-Ethereum supports HD Wallets. Therefore, now that we have the contracts and a network interface, it would be relatively straight forward to use Eth as a currency of exchange, or even, experimentally, a Unit of Account. We will not do that partly for the reasons stated, but also because Trade Control uses a [Bitcoin HD Wallet](https://github.com/tradecontrol/tc-bitcoin) instead.
+Ethereum supports HD Wallets. Therefore, now that we have the contracts and a network interface, it would be relatively straight forward to use Eth as a currency of exchange, or even, experimentally, a Unit of Account. We will not do that partly for the reasons stated, but also because Trade Control uses a [Bitcoin HD Wallet](https://github.com/tradecontrol/bitcoin) instead.
 
 Because we are only interested in the P2P world computer dimensions of Ethereum, the Trade Control network [can be installed on any public blockchain](#public-network) running an EVM outside the Main Net.  On these networks the ETH is free because it is without value.
 
@@ -45,8 +45,8 @@ For the latest changes and current version, consult the [Change Log](changelog.m
 
 The Trade Control Network is serviced by changes to the following repositories:
 
-- [tc-node](https://github.com/tradecontrol/tc-nodecore) >= 3.27.1
-- [tc-office](https://github.com/tradecontrol/tc-office) >= 3.13.0
+- [node](https://github.com/tradecontrol/sqlnode) >= 3.27.1
+- [office](https://github.com/tradecontrol/office) >= 3.13.0
 
 ### Installer
 

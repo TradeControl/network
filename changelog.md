@@ -8,7 +8,7 @@ First release May 2020
 
 ## 1.2.0
 
-Integration with the [Trade Control bitcoin](https://github.com/tradecontrol/tc-bitcoin) payment system.
+Integration with the [Trade Control bitcoin](https://github.com/tradecontrol/bitcoin) payment system.
 
 - [x] [invoice contract](src/tcNetwork/solidity/contracts/Invoice.sol) payment address and assignment event
 - [x] communicate the bitcoin payment address for invoiced receipts

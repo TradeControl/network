@@ -1,4 +1,4 @@
-# TC-Network - Technical Spec
+# Network - Technical Spec
 
 Trade Control is a recursive application. Recursion is used to model workflows within the node and allows them to be connected together. The inputs of each node are therefore designed to be a mirror image of its outputs, enabling them to be plugged together in supply-chains of any depth or complexity.
 
@@ -82,7 +82,7 @@ Mirrored invoices are not identical reflections. They add up to the same value, 
 
 The network interface is written in c# by asynchronous calls to the Nethereum generated service and contract definitions (Org, Task and Invoice). These routines can be found in the [tcWeb3 class](../src/tcNetwork/tcWeb3.cs) of the VS tcNetwork project.
 
-Because the service accepts its own outputs as inputs, you can only debug one side of the transaction (unless you have multiple instances of the same code, which is ill advised). It is involved, so download the repository and open the tc-network.sln file in Visual Studio to investigate the code. Each node on the network is polling using the same *PassiveWatch()* routine; therefore, that is the best place to start. The Watch function opens a new background thread and polls both the consortium for events and the node for new deployments and updates:
+Because the service accepts its own outputs as inputs, you can only debug one side of the transaction (unless you have multiple instances of the same code, which is ill advised). It is involved, so download the repository and open the network.sln file in Visual Studio to investigate the code. Each node on the network is polling using the same *PassiveWatch()* routine; therefore, that is the best place to start. The Watch function opens a new background thread and polls both the consortium for events and the node for new deployments and updates:
 
 ``` csharp
 async void PassiveWatch()
@@ -218,11 +218,11 @@ async void PassiveWatch()
 
 ## Allocations
 
-[The demo](tc_network_demo.md) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Task/Views/vwAllocationSvD.sql) view.
+[The demo](tc_network_demo.md) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/TradeControl/sqlnode/blob/master/src/tcNodeDb/Task/Views/vwAllocationSvD.sql) view.
 
 ## Invoice Mirrors
 
-[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.proc_Mirror](https://github.com/TradeControl/tc-nodecore/blob/master/src/tcNodeDb/Invoice/Stored%20Procedures/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
+[Invoice](#Invoice) mirrors are not reflections because they must mirror allocations, not orders. The [Invoice.proc_Mirror](https://github.com/TradeControl/sqlnode/blob/master/src/tcNodeDb/Invoice/Stored%20Procedures/proc_Mirror.sql) procedure applies the above allocations algorithm, but changes the polarity depending on the invoice demand. When the mirror is deployed, the owner writes the address to the target consortium. This corresponds to an act of signing off the invoice. Only the EOA of the invoice can sign, since the sender address is used by the Org.sol contract to obtain access to the invoice:
 
 ``` javascript
 function InvoiceMirror(Orgs storage _self, string memory _invoiceNumber, address _invoiceContract) internal

@@ -1,24 +1,24 @@
 # Trade Control - Network Demo
 
-Demonstrating how to set up supply chains: organising production, commerce and financial exchange. It assumes you are familiar with the system or have completed the [BOM demo](https://github.com/tradecontrol/tc-office/blob/master/docs/tc_demo_manufacturing.md). If you are following the [Bitcoin Demo](https://github.com/tradecontrol/tc-bitcoin/blob/master/docs/tc_bitcoin_demo.md), the procedure is the same as that for fiat currencies, except for the [payment](#payment).
+Demonstrating how to set up supply chains: organising production, commerce and financial exchange. It assumes you are familiar with the system or have completed the [BOM demo](https://github.com/tradecontrol/office/blob/master/docs/tc_demo_manufacturing.md). If you are following the [Bitcoin Demo](https://github.com/tradecontrol/bitcoin/blob/master/docs/tc_bitcoin_demo.md), the procedure is the same as that for fiat currencies, except for the [payment](#payment).
 
 ## Setup
 
 ### Requirements
 
 - [Test Environment](../readme.md#test-environment)
-- [TC Node](https://github.com/tradecontrol/tc-nodecore) - Fiat >= 3.27.1; Bitcoin >= 3.28.3
-- [TC Office](https://github.com/tradecontrol/tc-office) - Fiat >= 3.13.1; Bitcoin >= 3.14.1
+- [Node](https://github.com/tradecontrol/sqlnode) - Fiat >= 3.27.1; Bitcoin >= 3.28.3
+- [Office](https://github.com/tradecontrol/office) - Fiat >= 3.13.1; Bitcoin >= 3.14.1
 
 ### Database
 
 Firstly, we create a simple supply chain in the form Retail -> Secondary Industry -> Primary Industry ([UI -> CI -> MI](https://github.com/iamonnox/tradecontrol/blob/master/docs/tc_functions.md#interfaces)). Because we will be simulating the actions of three separate business entities, it may seem more complicated than it is. In a live environment you would only interact with the network from the vantage of a single entity. 
 
 1. Create three databases: tcTHEBUS, tcPLAPRO and tcSTOBOX with corresponding 64bit ODBC data sources.
-2. Configure each database using the [node installer](https://github.com/TradeControl/tc-nodecore/blob/master/docs/tc_nodecore_config.md) with a different business name for each (e.g. THE BUSINESS, PLASTICS PROVIDER, THE STORAGE BOX COMPANY). Accept the other defaults, including the Basic Configuration page.
-3. Install the [BOM Demo](https://github.com/tradecontrol/tc-office/blob/master/docs/tc_demo_manufacturing.md) into tcTHEBUS, **Activities option only**.
-4. Open the client and for each database [set up a connection](https://github.com/TradeControl/tc-office#connection).
-5. Optionally, [copy the Office interface](https://github.com/tradecontrol/tc-office/blob/master/src/access) into two additional folders and run [the client](https://github.com/tradecontrol/tc-office/blob/master/src/access/TCnode_3.accde) separately for each business. Change the Application Titles to facilitate switching businesses across the supply chain. 
+2. Configure each database using the [node installer](https://github.com/TradeControl/sqlnode/blob/master/docs/tc_nodecore_config.md) with a different business name for each (e.g. THE BUSINESS, PLASTICS PROVIDER, THE STORAGE BOX COMPANY). Accept the other defaults, including the Basic Configuration page.
+3. Install the [BOM Demo](https://github.com/tradecontrol/office/blob/master/docs/tc_demo_manufacturing.md) into tcTHEBUS, **Activities option only**.
+4. Open the client and for each database [set up a connection](https://github.com/TradeControl/office#connection).
+5. Optionally, [copy the Office interface](https://github.com/tradecontrol/office/blob/master/src/access) into two additional folders and run [the client](https://github.com/tradecontrol/office/blob/master/src/access/TCnode_3.accde) separately for each business. Change the Application Titles to facilitate switching businesses across the supply chain. 
 5. Connect to tcPLAPRO and in Organisations, Quick Entry, add account THE BUSINESS as a Customer, specifying payment terms (COD etc) and Standard Rate Vat. Then connect to tcSTOBOX and add THE BUSINESS as a supplier.
 
 > Account Codes do not have to match because each node maps its internal codes to Externally Owned Accounts (EOA).
@@ -71,7 +71,7 @@ Here's the STORAGE BOX COMPANY instance as well:
 
 > **Note**
 > 
-> For simplicity, the demo will give us only a single product to play with. To fully understand allocations and object mirroring you would need more than one product. The [Power-BI repository](https://github.com/tradecontrol/tc-powerbi) contains a T-SQL script that will create several additional products (albeit the same product in different colours) and a corresponding order book. This makes supply-chain operation more involved, but it generates a more realistic set of allocations against the tcPLAPRO supplier and the tcSTOBOX customer. To install this dataset, download the [netdemo_data_extension.sql](../src/scripts/netdemo_data_extension.sql) script and from SSMS run it against the tcTHEBUS database.
+> For simplicity, the demo will give us only a single product to play with. To fully understand allocations and object mirroring you would need more than one product. The [Power-BI repository](https://github.com/tradecontrol/powerbi) contains a T-SQL script that will create several additional products (albeit the same product in different colours) and a corresponding order book. This makes supply-chain operation more involved, but it generates a more realistic set of allocations against the tcPLAPRO supplier and the tcSTOBOX customer. To install this dataset, download the [netdemo_data_extension.sql](../src/scripts/netdemo_data_extension.sql) script and from SSMS run it against the tcTHEBUS database.
 
 3. Switch immediately back to the three Network Interfaces. You should see transactions being written to THE BUSINESS service as it deploys task contracts to the blockchain, with corresponding events emitted to the other two accounts. The Ganache accounts page will show a reduction in ETH and an increase in Tx count (around 120). Their transaction page records the contract deployments and calls.
 4. Unless ordering takes place via a catalogue, most object codes differ between companies. The first task, therefore, is to mirror these codes and write them to the blockchain. Connect to tcPLAPRO and open Network Allocations. Unknown, new materials await mirroring so that they can be identified. These activities are called Allocation Codes. There are three options: Create a new activity; assign to an existing code; and map to a catalogue identity (when Mirrors? is checked). Assignment would be the norm, but here we need to create mirror activities. Once mirrored the allocation code is removed from this list.
@@ -165,7 +165,7 @@ In manufacturing, despatches are made on a delivery note raised by the Despatch 
 
 ### Payment
 
-As the goods have flowed up the supply chain, so we now go back down again, paying the invoices in exchange for their goods or service. If you are using a fiat currency, this process is controlled by the banks. Otherwise, you can pay directly from your [Bitcoin Wallet](https://github.com/tradecontrol/tc-bitcoin).
+As the goods have flowed up the supply chain, so we now go back down again, paying the invoices in exchange for their goods or service. If you are using a fiat currency, this process is controlled by the banks. Otherwise, you can pay directly from your [Bitcoin Wallet](https://github.com/tradecontrol/bitcoin).
 
 #### Fiat
 

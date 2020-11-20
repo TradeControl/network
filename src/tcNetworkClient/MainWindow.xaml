@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TradeControl.Network"
         mc:Ignorable="d"
-        Title="TC Network" Height="562.5" Width="555.312" Loaded="mainWindow_Loaded" Icon="tcNetwork.ico" Closed="mainWindow_Closed">
+        Title="Network" Height="562.5" Width="555.312" Loaded="mainWindow_Loaded" Icon="tcNetwork.ico" Closed="mainWindow_Closed">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -32,7 +32,7 @@
                         <Label Content="NOTE" FontWeight="Bold" Margin="0,20,0,0"/>
                         <TextBlock TextWrapping="Wrap" Margin="5,0,0,0" >
                         For guidance consult the 
-                        <Hyperlink NavigateUri="http://github.com/tradecontrol/tc-network/" RequestNavigate="Hyperlink_RequestNavigate" >on-line help</Hyperlink>.
+                        <Hyperlink NavigateUri="http://github.com/tradecontrol/network/" RequestNavigate="Hyperlink_RequestNavigate" >on-line help</Hyperlink>.
                         </TextBlock>
                     </StackPanel>
 

@@ -3,7 +3,7 @@ Trade Control Network
 Date: 1.5.2020
 Author: IAM
 
-Documentation on github.com/tradecontrol/tc-network
+Documentation on github.com/tradecontrol/network
 
 Trade Control by Trade Control Ltd is licensed under GNU General Public License v3.0. 
 
