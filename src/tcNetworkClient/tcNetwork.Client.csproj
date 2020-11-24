@@ -53,7 +53,7 @@
     </Reference>
     <Reference Include="TradeControl.Node, Version=3.25.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\tc-nodecore\src\tcNode\bin\Debug\TradeControl.Node.dll</HintPath>
+      <HintPath>..\..\..\sqlnode\src\tcNode\bin\Debug\TradeControl.Node.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

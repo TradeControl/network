@@ -13,3 +13,8 @@ Integration with the [Trade Control bitcoin](https://github.com/tradecontrol/bit
 - [x] [invoice contract](src/tcNetwork/solidity/contracts/Invoice.sol) payment address and assignment event
 - [x] communicate the bitcoin payment address for invoiced receipts
 - [x] write the bitcoin address for paying invoice mirrors
+
+## 1.2.1
+
+- [x] Project re-name
+- [x] fix - replace task view with table access in TCWeb3.InvoiceDeploymentDetails()

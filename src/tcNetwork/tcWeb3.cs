@@ -844,7 +844,7 @@ namespace TradeControl.Network
                 totalGasUsed += itemReceipt.GasUsed.ToUlong();
             }
 
-            var tasks = from tb in TCNode.vwInvoiceDeploymentTasks where tb.InvoiceNumber == invoice.InvoiceNumber select tb;
+            var tasks = from tb in TCNode.tbInvoiceTasks where tb.InvoiceNumber == invoice.InvoiceNumber select tb;
 
             foreach (var task in tasks)
             {
