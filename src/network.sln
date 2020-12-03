@@ -7,7 +7,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{6E1869C1-2
 	ProjectSection(SolutionItems) = preProject
 		..\changelog.md = ..\changelog.md
 		..\readme.md = ..\readme.md
-		..\docs\tc_network_demo.md = ..\docs\tc_network_demo.md
 		..\docs\tc_network_spec.md = ..\docs\tc_network_spec.md
 	EndProjectSection
 EndProject
@@ -17,12 +16,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tcNetwork.Client", "tcNetwo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{D1F81865-138D-4C9F-AB13-8EBDE7EBFE1D}"
 	ProjectSection(SolutionItems) = preProject
-		scripts\netdemo_data_extension.sql = scripts\netdemo_data_extension.sql
+		scripts\network_data_extension.sql = scripts\network_data_extension.sql
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "installation", "installation", "{86200E83-8EA0-40D2-AC70-6A4654007894}"
 	ProjectSection(SolutionItems) = preProject
-		installation\tcNetworkSetup.zip = installation\tcNetworkSetup.zip
+		installation\tcNetwork.zip = installation\tcNetwork.zip
 	EndProjectSection
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "tcNetwork.Installer", "tcNetworkInstaller\tcNetworkInstaller.vdproj", "{D552D9ED-B8E4-4B70-A387-E069DACF45A7}"

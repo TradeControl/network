@@ -2,7 +2,7 @@
 
 Trade Control is a recursive application. Recursion is used to model workflows within the node and allows them to be connected together. The inputs of each node are therefore designed to be a mirror image of its outputs, enabling them to be plugged together in supply-chains of any depth or complexity.
 
-The core algorithms of the node are expressed in T-Sql, whilst they are connected through Ethereum via a c# interface. While [the demo](tc_network_demo.md) shows how these elements function together, the following document provides links to the code that implements this network.
+The core algorithms of the node are expressed in T-Sql, whilst they are connected through Ethereum via a c# interface. While [the tutorial](https://tradecontrol.github.io/tutorials/network) shows how these elements function together, the following document provides links to the code that implements this network.
 
 ## Solidity Contracts
 
@@ -38,7 +38,7 @@ The contract also contains mirrors of Activity and Cash Codes. Ideally, activiti
 
 ### Task
 
-The [Task Contract](../src/tcNetwork/solidity/contracts/Task.sol) is an extension of the node's Task schema. By now, you will know that there are no inherent sales or purchase orders, nor customers and suppliers in the schema design. However, it is not possible to mirror tasks directly because trade operates in terms of supply and demand. One supply often fulfils many demands. Instead, we mirror [allocations](#allocations). Whether or not a Task contract is on the supply or demand side is determined by its polarity. If the Cash Polarity is negative, the Quantity must be positive, making the Task a demand-side allocation. Switch that around and it becomes a supply-side order. You can see that working in the [Network Transactions](tc_network_demo.md#network-transactions) section of the demo.
+The [Task Contract](../src/tcNetwork/solidity/contracts/Task.sol) is an extension of the node's Task schema. By now, you will know that there are no inherent sales or purchase orders, nor customers and suppliers in the schema design. However, it is not possible to mirror tasks directly because trade operates in terms of supply and demand. One supply often fulfils many demands. Instead, we mirror [allocations](#allocations). Whether or not a Task contract is on the supply or demand side is determined by its polarity. If the Cash Polarity is negative, the Quantity must be positive, making the Task a demand-side allocation. Switch that around and it becomes a supply-side order. You can see that working in the [Network Transactions](https://tradecontrol.github.io/tutorials/network#network-transactions) section of the demo.
 
 Ethereum does not support decimals. Therefore, task quantities and dates are converted by the following interface functions:
 
@@ -76,7 +76,7 @@ Upon contract deployment, the target account is notified of its address by a cal
 | Sales Invoice | POS | POS | Purchase Invoice | NEG | NEG |
 | Debit Note | NEG | POS | Credit Note | POS | NEG |
 
-Mirrored invoices are not identical reflections. They add up to the same value, one negative and the other positive, but their details are allocations and, in consequence, they can be very different. In addition, a mirror emits its own events - payment scheduling, status changes and fulfilments. This is covered in [the demo](tc_network_demo.md#payment).
+Mirrored invoices are not identical reflections. They add up to the same value, one negative and the other positive, but their details are allocations and, in consequence, they can be very different. In addition, a mirror emits its own events - payment scheduling, status changes and fulfilments. This is covered in [the tutorial](https://tradecontrol.github.io/tutorials/network#payment).
 
 ## Network Interface
 
@@ -218,7 +218,7 @@ async void PassiveWatch()
 
 ## Allocations
 
-[The demo](tc_network_demo.md) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/TradeControl/sqlnode/blob/master/src/tcNodeDb/Task/Views/vwAllocationSvD.sql) view.
+[The tutorial](https://tradecontrol.github.io/tutorials/network) reveals how allocations are deployed to synchronise the network. The T-Sql algorithm for calculating SvD projections can be found in the [Task.vwAllocationSvD](https://github.com/TradeControl/sqlnode/blob/master/src/tcNodeDb/Task/Views/vwAllocationSvD.sql) view.
 
 ## Invoice Mirrors
 
