@@ -5,3 +5,4 @@ The following records proposed changes to the full release of the Trade Control 
 ## 1.3.0
 
 - [ ] implement the network as a windows service
+- [ ] re-send allocations and mirrors when notified services are down

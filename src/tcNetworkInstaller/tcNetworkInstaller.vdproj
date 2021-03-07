@@ -52,7 +52,7 @@
         "Entry"
         {
         "MsmKey" = "8:_1911A15B35C65544D4A3FA0397ADD05C"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -124,7 +124,7 @@
         "Entry"
         {
         "MsmKey" = "8:_28871284CD515E9AF8A7595938B3F8A3"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -166,7 +166,7 @@
         "Entry"
         {
         "MsmKey" = "8:_697CC46A40771D40B36C495D80625BB7"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,7 +178,7 @@
         "Entry"
         {
         "MsmKey" = "8:_6B3308BAA1EF1A6F0E6E8073FAC9FDF6"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -238,7 +238,13 @@
         "Entry"
         {
         "MsmKey" = "8:_831220F8175877637998924F9FDBADCA"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_941904083E86FAE641B480F3AECA82F4"
+        "OwnerKey" = "8:_D0BB0F0DDECE4E5285DF84E18708CE99"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -250,7 +256,7 @@
         "Entry"
         {
         "MsmKey" = "8:_9CD6888F8000961A1360FDD61C7E071C"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -310,7 +316,7 @@
         "Entry"
         {
         "MsmKey" = "8:_A1AF89AD738C52DDFE91426FA8F5FC81"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -376,7 +382,7 @@
         "Entry"
         {
         "MsmKey" = "8:_B240B866FE1062F25576948E3C05FF1A"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -388,12 +394,6 @@
         "Entry"
         {
         "MsmKey" = "8:_B240B866FE1062F25576948E3C05FF1A"
-        "OwnerKey" = "8:_D0BB0F0DDECE4E5285DF84E18708CE99"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
         "OwnerKey" = "8:_D0BB0F0DDECE4E5285DF84E18708CE99"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -532,7 +532,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FE13CBA22C311135F55B1E8C39C0E82B"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -544,7 +544,7 @@
         "Entry"
         {
         "MsmKey" = "8:_FF26E4F629E60226E54B9A4F92CFF598"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -556,19 +556,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_697CC46A40771D40B36C495D80625BB7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C131AFFF9202D613DB3C8630B5E1CD3A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D0BB0F0DDECE4E5285DF84E18708CE99"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_941904083E86FAE641B480F3AECA82F4"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -683,6 +677,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_AD9C2EA2DEE40607E87F1C8216C713DB"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_697CC46A40771D40B36C495D80625BB7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -1090,6 +1090,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_941904083E86FAE641B480F3AECA82F4"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:TradeControl.Network, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_941904083E86FAE641B480F3AECA82F4"
+                    {
+                    "Name" = "8:TradeControl.Network.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:TradeControl.Network.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_5CE534B496694C539BCE840515F5A1A5"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9CD6888F8000961A1360FDD61C7E071C"
             {
             "AssemblyRegister" = "3:1"
@@ -1197,37 +1228,6 @@
                     }
                 }
             "SourcePath" = "8:Nethereum.Contracts.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_5CE534B496694C539BCE840515F5A1A5"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C131AFFF9202D613DB3C8630B5E1CD3A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TradeControl.Network, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_C131AFFF9202D613DB3C8630B5E1CD3A"
-                    {
-                    "Name" = "8:TradeControl.Network.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:TradeControl.Network.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5CE534B496694C539BCE840515F5A1A5"
@@ -1404,7 +1404,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:TradeControl.Node, Version=3.30.6.0, Culture=neutral, PublicKeyToken=cb281103e4e604b8, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:TradeControl.Node, Version=3.31.1.0, Culture=neutral, PublicKeyToken=cb281103e4e604b8, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_FF26E4F629E60226E54B9A4F92CFF598"
@@ -1498,15 +1498,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Trade Control Network Interface"
-        "ProductCode" = "8:{A9806C20-229F-472C-AD2C-06158EAB9913}"
-        "PackageCode" = "8:{D91198A5-6C6A-481C-A4A7-082A0D20BE55}"
+        "ProductCode" = "8:{E8A914AD-93E7-451C-8E0B-6D72B8CC7066}"
+        "PackageCode" = "8:{4E14DF9E-DDEC-4088-9861-2011313AA091}"
         "UpgradeCode" = "8:{898BDB0D-A120-474B-AF10-6DE485121C8C}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.2.1"
+        "ProductVersion" = "8:1.2.2"
         "Manufacturer" = "8:Trade Control"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -2034,7 +2034,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D0BB0F0DDECE4E5285DF84E18708CE99"
             {
-            "SourcePath" = "8:..\\tcNetworkClient\\obj\\Release\\TradeControl.Network.Client.exe"
+            "SourcePath" = "8:..\\tcNetworkClient\\obj\\Debug\\TradeControl.Network.Client.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_5CE534B496694C539BCE840515F5A1A5"
