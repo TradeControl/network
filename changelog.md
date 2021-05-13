@@ -1,6 +1,6 @@
 # Changes
 
-The following records proposed changes to the full release of the Trade Control network. Checked items are completed but not yet released in the master commit.
+Changes to version 1.2, released August 2020
 
 ## 1.3.0
 
