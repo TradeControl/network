@@ -8,7 +8,7 @@ First published 19 May 2020
 
 ## Documentation
 
-- [overview](https://tradecontrol.github.io/network)
+- [overview](https://tradecontrol.github.io/tutorials/network_overview)
 - [installation](https://tradecontrol.github.io/tutorials/installing-network)
 - [tutorial](https://tradecontrol.github.io/tutorials/network)
 - [technical specification](docs/tc_network_spec.md)

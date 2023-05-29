@@ -63,8 +63,8 @@ namespace TradeControl.Network
         public event EthEventHandler OnWatchTransaction;
         public event EthEventHandler OnWatchCloseError;
 
-        static List<string> _passiveModeAccounts = new List<string>();
-        static List<string> _activeModeAccounts = new List<string>();
+        static readonly List<string> _passiveModeAccounts = new List<string>();
+        static readonly List<string> _activeModeAccounts = new List<string>();
 
         Thread passiveThread;
         List<Thread> activeThreads;
@@ -72,8 +72,8 @@ namespace TradeControl.Network
         const int pollRate = 10000;
 
         #region ethereum storage conversions
-        Func<long, DateTime> FromUnixEpoch = (ms) => new DateTime(1970, 1, 1).AddMilliseconds(ms);
-        Func<DateTime, long> ToUnixEpoch = (dt) => (long)(dt - new DateTime(1970, 1, 1)).TotalMilliseconds;
+        readonly Func<long, DateTime> FromUnixEpoch = (ms) => new DateTime(1970, 1, 1).AddMilliseconds(ms);
+        readonly Func<DateTime, long> ToUnixEpoch = (dt) => (long)(dt - new DateTime(1970, 1, 1)).TotalMilliseconds;
 
         readonly Func<decimal, short, BigInteger> ToEthDecimalStorage = (v, dp) => new BigInteger(Math.Round((double)v * Math.Pow(10, dp), 0));
         readonly Func<BigInteger, short, decimal> FromEthDecimalStorage = (v, dp) => decimal.Parse(v.ToString()) * (decimal)Math.Pow(10, dp * -1);
@@ -127,8 +127,7 @@ namespace TradeControl.Network
             {
                 StopWatching();
 
-                if (TCNode != null)
-                    TCNode.AddNetworkProvider(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress);
+                TCNode?.AddNetworkProvider(NetworkProvider, PublicKey, PrivateKey, ConsortiumAddress);
             }
             catch (Exception err)
             {
@@ -414,7 +413,7 @@ namespace TradeControl.Network
                         }
                     }
 
-                    var activityMirrorEvents = await activityMirrorEventHandler.GetFilterChanges(activityMirrorFilter);
+                    var activityMirrorEvents = await activityMirrorEventHandler.GetFilterChangesAsync(activityMirrorFilter);
                     foreach (var activityMirror in activityMirrorEvents)
                     {
                         string accountCode = await consortium.EoaAccountCodeQueryAsync(activityMirror.Event.Eoa);
@@ -434,7 +433,7 @@ namespace TradeControl.Network
                         }
                     }
 
-                    var taskNotifyEvents = await taskNotifyEventHandler.GetFilterChanges(taskNotifyFilter);
+                    var taskNotifyEvents = await taskNotifyEventHandler.GetFilterChangesAsync(taskNotifyFilter);
                     foreach (var taskNotification in taskNotifyEvents)
                     {
                         string accountCode = await consortium.EoaAccountCodeQueryAsync(taskNotification.Event.Eoa);
@@ -482,7 +481,7 @@ namespace TradeControl.Network
                         }
                     }
 
-                    var cashCodeMirrorEvents = await cashCodeMirrorEventHandler.GetFilterChanges(cashCodeMirrorFilter);
+                    var cashCodeMirrorEvents = await cashCodeMirrorEventHandler.GetFilterChangesAsync(cashCodeMirrorFilter);
                     foreach (var cashCodeMirror in cashCodeMirrorEvents)
                     {
                         string accountCode = await consortium.EoaAccountCodeQueryAsync(cashCodeMirror.Event.Eoa);
@@ -502,7 +501,7 @@ namespace TradeControl.Network
                         }
                     }
 
-                    var invoiceNotifyEvents = await invoiceNotifyEventHandler.GetFilterChanges(invoiceNotifyFilter);
+                    var invoiceNotifyEvents = await invoiceNotifyEventHandler.GetFilterChangesAsync(invoiceNotifyFilter);
                     foreach (var invoiceNotification in invoiceNotifyEvents)
                     {
                         string accountCode = await consortium.EoaAccountCodeQueryAsync(invoiceNotification.Event.Eoa);                        
@@ -615,9 +614,9 @@ namespace TradeControl.Network
                 var taskContract = new TaskService(web3, deploymentReceipt.ContractAddress);
 
                 var headerReceipt = await taskContract.InitialiseRequestAndWaitForReceiptAsync(task.TaskCode, targetConsortiumAddress, (byte)task.CashModeCode, 
-                        task.ActivityCode, task.ActivityDescription != null ? task.ActivityDescription : string.Empty, task.TaskTitle != null ? task.TaskTitle : string.Empty,
+                        task.ActivityCode, task.ActivityDescription ?? string.Empty, task.TaskTitle ?? string.Empty,
                         (byte)task.TaskStatusCode, new BigInteger(ToUnixEpoch(task.ActionOn)), ToEthDecimalStorage(task.UnitCharge, EVM_CHARGE_DP), ToEthDecimalStorage(task.Quantity, EVM_QUANTITY_DP), 
-                        ToEthDecimalStorage(task.TaxRate, EVM_TAX_RATE_DP), task.UnitOfMeasure, task.UnitOfCharge != null ? task.UnitOfCharge : string.Empty);
+                        ToEthDecimalStorage(task.TaxRate, EVM_TAX_RATE_DP), task.UnitOfMeasure, task.UnitOfCharge ?? string.Empty);
                 WatchTransaction($"Tx {headerReceipt.TransactionHash}", $"Task {task.TaskCode} header set. Gas {headerReceipt.GasUsed} Wei");
 
                 var registerReceipt = await consortium.TaskNewRequestAndWaitForReceiptAsync(task.TaskCode, task.AccountCode, deploymentReceipt.ContractAddress);
@@ -783,10 +782,10 @@ namespace TradeControl.Network
                 WatchTransaction($"Tx {deploymentReceipt.TransactionHash}", $"Invoice {invoice.InvoiceNumber} deployed. Gas {deploymentReceipt.GasUsed} Wei");
 
                 var invoiceContract = new InvoiceService(web3, deploymentReceipt.ContractAddress);
-                var headerReceipt = await invoiceContract.SetHeaderRequestAndWaitForReceiptAsync(invoice.InvoiceNumber, invoice.ContractNumber == null ? string.Empty : invoice.ContractNumber,
+                Nethereum.RPC.Eth.DTOs.TransactionReceipt headerReceipt = await invoiceContract.SetHeaderRequestAndWaitForReceiptAsync(invoice.InvoiceNumber, invoice.ContractNumber ?? string.Empty,
                         (byte)invoice.InvoicePolarity, (byte)invoice.PaymentPolarity, (byte)invoice.InvoiceStatusCode, ToUnixEpoch(invoice.DueOn), ToUnixEpoch(invoice.InvoicedOn),
                         ToEthDecimalStorage(invoice.InvoiceValue, EVM_CHARGE_DP), ToEthDecimalStorage(invoice.TaxValue, EVM_CHARGE_DP),
-                        invoice.PaymentTerms == null ? string.Empty : invoice.PaymentTerms, invoice.UnitOfCharge == null ? string.Empty : invoice.UnitOfCharge);
+                        invoice.PaymentTerms ?? string.Empty, invoice.UnitOfCharge ?? string.Empty);
                 WatchTransaction($"Tx {headerReceipt.TransactionHash}", $"Invoice {invoice.InvoiceNumber} header set. Gas {headerReceipt.GasUsed} Wei");
 
                 var registerReceipt = await consortium.InvoiceNewRequestAndWaitForReceiptAsync(invoice.AccountCode, invoice.InvoiceNumber, deploymentReceipt.ContractAddress);
