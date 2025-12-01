@@ -1,21 +1,24 @@
 # Trade Control - Network
 
-Connecting [Trade Control](https://github.com/tradecontrol/sqlnode) nodes with [Ethereum](https://github.com/ethereum/wiki/wiki).
+Connecting [Trade Control](https://tradecontrol.github.io/) nodes with [Ethereum](https://github.com/ethereum/wiki/wiki).
 
 First published 19 May 2020
 
-[development schedule](changelog.md)
+# ⏸️ On-Hold Notice
+
+This repository is currently **on hold**.  
+
+It contains operational prototypes and user guides that will be re‑implemented in the new AI‑native ERP framework.  
+
+Development will resume once all [Office functionality](https://github.com/TradeControl/office) has been translated into the [ASP.NET project](https://github.com/TradeControl/tradecontrol.web).
 
 ## Documentation
 
-- [overview](https://tradecontrol.github.io/tutorials/network_overview)
-- [installation](https://tradecontrol.github.io/tutorials/installing-network)
-- [tutorial](https://tradecontrol.github.io/tutorials/network)
-- [technical specification](docs/tc_network_spec.md)
-
-## Donations
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C55YGUTBJ4N36)
+- [overview](./docs/overview.md)
+- [installation](./docs/installation.md)
+- [tutorial](./docs/network.md)
+- [technical specification](./docs/tc_network_spec.md)
+- [change log](./docs/changelog.md)
 
 ## Licence
 
